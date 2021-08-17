@@ -23,7 +23,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_envvar('APP_CONFIG_FILE')
 
-    # ORM
+# ORM
     db.init_app(app)
     if app.config['SQLALCHEMY_DATABASE_URI'].startswith("sqlite"):
         migrate.init_app(app, db, render_as_batch=True)
@@ -31,7 +31,7 @@ def create_app():
         migrate.init_app(app, db)
     from . import models
 
-    # 블루프린트
+# 블루프린트
     from .views import main_views, question_views, answer_views, auth_views, comment_views, vote_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(question_views.bp)
